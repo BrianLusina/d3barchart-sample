@@ -14,21 +14,6 @@ body {
 p {
   margin: 0; }
 
-.notes {
-  font-size: 12px;
-  font-family: sans-serif;
-  color: steelblue;
-  padding: 20px;
-  text-align: center; }
-
-.amount {
-  font-size: 1em;
-  font-weight: bold; }
-
-.year {
-  font-size: 0.8em;
-  font-weight: normal; }
-
 .chart {
   margin: 0 auto;
   padding: 0;
@@ -69,5 +54,20 @@ p {
   width: 1050px;
   height: 640px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32), 0 3px 12px 0 rgba(0, 0, 0, 0.24); }
+
+.notes {
+  font-size: 12px;
+  font-family: sans-serif;
+  color: steelblue;
+  padding: 20px;
+  text-align: center; }
+
+.amount {
+  font-size: 1em;
+  font-weight: bold; }
+
+.year {
+  font-size: 0.8em;
+  font-weight: normal; }
 
 /*# sourceMappingURL=index.css.map */
