@@ -3,6 +3,7 @@
  * @notes: Chart component, displays chart data from json
  */
 import React, { Component } from 'react';
+import d3 from 'd3';
 
 export default class Chart extends Component{
     constructor(){
@@ -16,5 +17,11 @@ export default class Chart extends Component{
             </svg>
         )
     }
-
 }
+
+/**
+ * This chart component will require prop types for rendering data to the Dom
+ * */
+Chart.propTypes = {
+
+};

@@ -12,7 +12,12 @@ class App extends Component {
     constructor(){
         super();
         this.state = {
-
+            description:"",
+            frequency: "",
+            fromDate: "",
+            toDate: "",
+            data:[],
+            name: ""
         }
     }
 
@@ -24,10 +29,10 @@ class App extends Component {
     render() {
         return (
             <div className="card">
-                <h3 className="title">Gross Domestic Product</h3>
+                <h3 className="title">{this.state.name}</h3>
                 <Chart/>
                 <div className="notes">
-
+                    {this.state.description}
                 </div>
             </div>
         );
@@ -35,15 +40,23 @@ class App extends Component {
 
     /**
      * Called after render, best place to fetch data from API
+     * Binds to promise to allow for updating state of this container
      * */
     componentDidMount(){
         let data = fetchData(constants.URL);
 
         data.then(function(obj){
-            console.log("obj", obj)
-        }).catch(function(err){
+            this.setState({
+                description: obj.description,
+                frequency: obj.frequency,
+                fromDate: obj.fromDate,
+                toDate: obj.toDate,
+                data: obj.data,
+                name: obj.name
+            });
+        }.bind(this)).catch(function(err){
            console.error(err);
-        });
+        }.bind(this));
     }
 }
 
