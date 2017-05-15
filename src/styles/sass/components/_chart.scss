@@ -1,0 +1,19 @@
+.chart {
+  margin: 0 auto;
+  padding: 0;
+  background-color: white;
+
+  & .mouseover {
+    fill: lightsteelblue;
+  }
+
+  & rect, & .mouseoff {
+    fill: steelblue;
+  }
+
+  & text {
+    fill: black;
+    font: 10px sans-serif;
+    text-anchor: end;
+  }
+}
