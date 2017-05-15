@@ -5,14 +5,26 @@
 import axios from 'axios';
 
 /**
- * Fetches data from given url
+ * Fetches data from given url, assigns to variables and returns results
  * @param {String} url to fetch data from
  * @return {object} JSON object with data from given url
  * */
 export default function fetchData(url){
-    axios.get(url).then(function(response){
-        console.log(response);
+    let description = "", fromDate = "", toDate = "";
+    let name = "", frequency = "", data = [];
+    return axios.get(url).then(function(response){
+        description = response.data.description;
+        fromDate = response["data"]["from_date"];
+        toDate = response["data"]["to_date"];
+        name = response["data"]["name"];
+        frequency = response["data"]["frequency"];
+        data = response["data"]["data"];
+
+        return {
+            description, frequency, fromDate, toDate, data, name
+        }
     }).catch(function(error){
-        console.error(error);
-    })
+        console.error("Error: ", error);
+    });
 }
+

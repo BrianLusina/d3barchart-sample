@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../styles/App.css';
 import Chart from '../components/chart';
 import fetchData from '../api/api';
+import * as constants from '../constants/constants';
 
 /**
  * Container of application that will host and render children components
@@ -12,7 +12,7 @@ class App extends Component {
     constructor(){
         super();
         this.state = {
-            url: 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json'
+
         }
     }
 
@@ -37,7 +37,13 @@ class App extends Component {
      * Called after render, best place to fetch data from API
      * */
     componentDidMount(){
-        fetchData(this.state.url);
+        let data = fetchData(constants.URL);
+
+        data.then(function(obj){
+            console.log("obj", obj)
+        }).catch(function(err){
+           console.error(err);
+        });
     }
 }
 
