@@ -21,16 +21,12 @@ class App extends Component {
         }
     }
 
-    /**/
-    componentWillMount(){
-
-    }
-
     render() {
         return (
             <div className="card">
                 <h3 className="title">{this.state.name}</h3>
-                <Chart/>
+                <Chart data={this.state.data} minDate={this.state.fromDate}
+                       maxDate={this.state.toDate}/>
                 <div className="notes">
                     {this.state.description}
                 </div>
@@ -56,7 +52,7 @@ class App extends Component {
             });
         }.bind(this)).catch(function(err){
            console.error(err);
-        }.bind(this));
+        });
     }
 }
 
