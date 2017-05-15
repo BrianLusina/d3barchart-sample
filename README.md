@@ -8,11 +8,11 @@ This is a simple D3 project with ReactJS for demonstrating using D3 library for 
 Setup is quite simple:
 
 ```bash
-git clone 
-cd 
-npm install
+$ git clone https://github.com/BrianLusina/d3barchart-sample.git 
+$ cd d3barchart-sample 
+d3barchart-sample $ npm install
 # if using yarn
-yarn install
+d3barchart-sample $ yarn install
 ```
 > that will run the application and open your default browse
 
