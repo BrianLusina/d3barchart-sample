@@ -43,6 +43,7 @@ export default class Chart extends Component{
     }
 
     render(){
+        this._extractData();
         return(
             <svg>
 
@@ -54,15 +55,73 @@ export default class Chart extends Component{
      * Extracts data from object received in props
      * */
     _extractData(){
-        let x = d3.time.scale().domain([this.state.minDate, this.state.maxDate])
+        let x = d3.scaleTime().domain([this.state.minDate, this.state.maxDate])
             .range([0, this.width]);
 
-        var y = d3.scale.linear()
+        let y = d3.scaleLinear()
             .range([this.height, 0])
             .domain([0, d3.max(this.state.data, function(d) {
                 return d[1];
             })]);
 
+        let xAxis = d3.axisBottom(x).ticks(d3.timeYears, 5);
+
+        let yAxis = d3.axisLeft(y).ticks(10, "");
+
+        let div = d3.select(".card").append("div").attr("class", "tooltip").style("opacity",0);
+
+        let chart = d3.select(".chart")
+            .attr("width", this.width + this.margin.left + this.margin.right)
+            .attr("height", this.height + this.margin.top + this.margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
+
+        chart.append("g").attr("class", "x axis")
+            .attr("transform", "translate(0," + this.height + ")")
+            .call(xAxis);
+
+        chart.append("g").attr("class", "y axis").call(yAxis).append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.8em")
+            .style("text-anchor", "end")
+            .text("Gross Domestic Product, USA");
+
+        chart.selectAll(".bar").data(this.state.data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) {
+                return x(new Date(d[0]));
+            })
+            .attr("y", function(d) {
+                return y(d[1]);
+            })
+            .attr("height", function(d) {
+                return this.height - y(d[1]);
+            })
+            .attr("width", this.state.barWidth)
+            .on("mouseover", function(d) {
+                let rect = d3.select(this);
+                rect.attr("class", "mouseover");
+                let currentDateTime = new Date(d[0]);
+                let year = currentDateTime.getFullYear();
+                let month = currentDateTime.getMonth();
+                let dollars = d[1];
+                div.transition()
+                    .duration(200)
+                    .style("opacity", 0.9);
+                div.html("<span class='amount'>" + this.state.formatCurrency(dollars) + "&nbsp;Billion </span><br><span class='year'>" + year + ' - ' + this.state.months[month] + "</span>")
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 50) + "px");
+            })
+            .on("mouseout", function() {
+                let rect = d3.select(this);
+                rect.attr("class", "mouseoff");
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
     }
 }
 
