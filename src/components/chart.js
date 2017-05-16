@@ -4,6 +4,7 @@
  */
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import * as axis from 'd3-axis';
 import PropTypes from 'prop-types';
 
 export default class Chart extends Component{
@@ -42,6 +43,8 @@ export default class Chart extends Component{
         });
     }
 
+    /**
+     * Renders to the DOM*/
     render(){
         this._extractData();
         return(
@@ -59,14 +62,15 @@ export default class Chart extends Component{
             .range([0, this.width]);
 
         let y = d3.scaleLinear()
-            .range([this.height, 0])
-            .domain([0, d3.max(this.state.data, function(d) {
+            .domain([0, d3.max(this.state.data, function (d) {
                 return d[1];
-            })]);
+            })]).range([this.height, 0]);
 
         let xAxis = d3.axisBottom(x).ticks(d3.timeYears, 5);
+        // let xAxis = d3.axisBottom(x).ticks(d3.timeYears, 5);
 
-        let yAxis = d3.axisLeft(y).ticks(10, "");
+        //let yAxis = axis.axisLeft(y).ticks(10, "");
+        let yAxis = axis.axisLeft(y).ticks(10);
 
         let div = d3.select(".card").append("div").attr("class", "tooltip").style("opacity",0);
 
@@ -75,7 +79,6 @@ export default class Chart extends Component{
             .attr("height", this.height + this.margin.top + this.margin.bottom)
             .append("g")
             .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
-
 
         chart.append("g").attr("class", "x axis")
             .attr("transform", "translate(0," + this.height + ")")
@@ -111,7 +114,8 @@ export default class Chart extends Component{
                 div.transition()
                     .duration(200)
                     .style("opacity", 0.9);
-                div.html("<span class='amount'>" + this.state.formatCurrency(dollars) + "&nbsp;Billion </span><br><span class='year'>" + year + ' - ' + this.state.months[month] + "</span>")
+                div.html("<span class='amount'>" +
+                    this.state.formatCurrency(dollars) + "&nbsp;Billion </span><br><span class='year'>" + year + ' - ' + this.state.months[month] + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 50) + "px");
             })
