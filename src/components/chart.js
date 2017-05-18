@@ -4,16 +4,11 @@
  */
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-// import * as axis from 'd3-axis';
 import PropTypes from 'prop-types';
 
 export default class Chart extends Component{
     constructor(){
         super();
-        this.state = {
-            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            formatCurrency: d3.format("$,.2f"),
-        };
 
         this._extractData = this._extractData.bind(this);
     }
@@ -38,6 +33,10 @@ export default class Chart extends Component{
      * Extracts data from object received in props
      * */
     _extractData(props){
+        let formatCurrency = d3.format("$,.2f");
+        let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December'];
+
         let margin = {
             top: 5,
             right: 10,
@@ -111,7 +110,7 @@ export default class Chart extends Component{
                     .duration(200)
                     .style("opacity", 0.9);
                 div.html("<span class='amount'>" +
-                    this.state.formatCurrency(dollars) + "&nbsp;Billion </span><br><span class='year'>" + year + ' - ' + this.state.months[month] + "</span>")
+                    formatCurrency(dollars) + "&nbsp;Billion </span><br><span class='year'>" + year + ' - ' + months[month] + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 50) + "px");
             })
