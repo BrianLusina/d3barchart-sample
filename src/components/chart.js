@@ -4,29 +4,16 @@
  */
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import * as axis from 'd3-axis';
+// import * as axis from 'd3-axis';
 import PropTypes from 'prop-types';
 
 export default class Chart extends Component{
     constructor(){
         super();
         this.state = {
-            barWidth: 0,
             months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             formatCurrency: d3.format("$,.2f"),
-            data: [],
-            minDate:"",
-            maxDate:""
         };
-
-        this.margin = {
-                top: 5,
-                right: 10,
-                bottom: 30,
-                left: 75
-            };
-        this.width = 1000 - this.margin.left - this.margin.right;
-        this.height = 500 - this.margin.top - this.margin.bottom;
 
         this._extractData = this._extractData.bind(this);
     }
@@ -35,21 +22,14 @@ export default class Chart extends Component{
      * Called when a component will receive props
      * */
     componentWillReceiveProps(nextProps){
-        this.setState({
-            barWidth: Math.ceil(this.width / nextProps.data.length),
-            data: nextProps.data,
-            minDate: new Date(nextProps.minDate),
-            maxDate: new Date(nextProps.maxDate)
-        });
+        this._extractData(nextProps);
     }
 
     /**
      * Renders to the DOM*/
     render(){
-        this._extractData();
         return(
-            <svg>
-
+            <svg className="chart">
             </svg>
         )
     }
@@ -57,31 +37,47 @@ export default class Chart extends Component{
     /**
      * Extracts data from object received in props
      * */
-    _extractData(){
-        let x = d3.scaleTime().domain([this.state.minDate, this.state.maxDate])
-            .range([0, this.width]);
+    _extractData(props){
+        let margin = {
+            top: 5,
+            right: 10,
+            bottom: 30,
+            left: 75
+        };
+        let width = 1000 - margin.left - margin.right;
+        let height = 500 - margin.top - margin.bottom;
+        
+        let minDate = new Date(props.minDate);
+        let maxDate = new Date(props.maxDate);
+
+        let barWidth = Math.ceil(width / props.data.length);
+
+        let x = d3.scaleTime()
+            .domain([minDate, maxDate])
+            .range([0, width]);
 
         let y = d3.scaleLinear()
-            .domain([0, d3.max(this.state.data, function (d) {
+            .domain([0, d3.max(props.data, function (d) {
                 return d[1];
-            })]).range([this.height, 0]);
+            })]).range([height, 0]);
 
-        let xAxis = d3.axisBottom(x).ticks(d3.timeYears, 5);
-        // let xAxis = d3.axisBottom(x).ticks(d3.timeYears, 5);
+        let xAxis = d3.axisBottom(x).ticks(5);
 
-        //let yAxis = axis.axisLeft(y).ticks(10, "");
-        let yAxis = axis.axisLeft(y).ticks(10);
+        let yAxis = d3.axisLeft(y).ticks(10, "");
 
-        let div = d3.select(".card").append("div").attr("class", "tooltip").style("opacity",0);
+        let div = d3.select(".card")
+            .append("div")
+            .attr("class", "tooltip")
+            .style("opacity",0);
 
         let chart = d3.select(".chart")
-            .attr("width", this.width + this.margin.left + this.margin.right)
-            .attr("height", this.height + this.margin.top + this.margin.bottom)
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
             .append("g")
-            .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         chart.append("g").attr("class", "x axis")
-            .attr("transform", "translate(0," + this.height + ")")
+            .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
 
         chart.append("g").attr("class", "y axis").call(yAxis).append("text")
@@ -91,7 +87,7 @@ export default class Chart extends Component{
             .style("text-anchor", "end")
             .text("Gross Domestic Product, USA");
 
-        chart.selectAll(".bar").data(this.state.data)
+        chart.selectAll(".bar").data(props.data)
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d) {
@@ -101,9 +97,9 @@ export default class Chart extends Component{
                 return y(d[1]);
             })
             .attr("height", function(d) {
-                return this.height - y(d[1]);
+                return height - y(d[1]);
             })
-            .attr("width", this.state.barWidth)
+            .attr("width", barWidth)
             .on("mouseover", function(d) {
                 let rect = d3.select(this);
                 rect.attr("class", "mouseover");

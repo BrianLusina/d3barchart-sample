@@ -21,6 +21,23 @@ class App extends Component {
         }
     }
 
+    componentWillMount(){
+        let data = fetchData(constants.URL);
+
+        data.then(function(obj){
+            this.setState({
+                description: obj.description,
+                frequency: obj.frequency,
+                fromDate: obj.fromDate,
+                toDate: obj.toDate,
+                data: obj.data,
+                name: obj.name
+            });
+        }.bind(this)).catch(function(err){
+            console.error(err);
+        });
+    }
+
     render() {
         return (
             <div className="card">
@@ -34,26 +51,6 @@ class App extends Component {
         );
     }
 
-    /**
-     * Called after render, best place to fetch data from API
-     * Binds to promise to allow for updating state of this container
-     * */
-    componentDidMount(){
-        let data = fetchData(constants.URL);
-
-        data.then(function(obj){
-            this.setState({
-                description: obj.description,
-                frequency: obj.frequency,
-                fromDate: obj.fromDate,
-                toDate: obj.toDate,
-                data: obj.data,
-                name: obj.name
-            });
-        }.bind(this)).catch(function(err){
-           console.error(err);
-        });
-    }
 }
 
 export default App;
