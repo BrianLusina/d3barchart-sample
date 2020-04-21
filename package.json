@@ -7,20 +7,24 @@
     "d3-axis": "^1.0.7",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "snyk": "^1.306.0"
   },
   "devDependencies": {
     "d3": "^4.8.0",
     "enzyme": "^2.8.2",
     "expect": "^1.20.2",
-    "react-scripts": "0.9.5",
-    "surge": "^0.19.0"
+    "react-scripts": "3.0.0",
+    "surge": "^0.20.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "surge --project ./build --domain barchart.surge.sh"
-  }
+    "deploy": "surge --project ./build --domain barchart.surge.sh",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
+  },
+  "snyk": true
 }
