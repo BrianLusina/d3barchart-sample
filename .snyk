@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.14.1
+version: v1.19.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -664,3 +664,78 @@ patch:
         patched: '2020-05-01T00:42:10.449Z'
     - react-scripts > jest > jest-cli > jest-runtime > babel-jest > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
         patched: '2020-05-01T00:42:10.449Z'
+    - react-scripts > react-dev-utils > inquirer > lodash:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > react-error-overlay > react-dev-utils > inquirer > lodash:
+        patched: '2020-09-09T16:35:51.512Z'
+  'npm:debug:20170905':
+    - react-scripts > react-dev-utils > detect-port-alt > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > react-error-overlay > react-dev-utils > detect-port-alt > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > react-error-overlay > react-dev-utils > sockjs-client > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > braces > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > braces > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > braces > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > extglob > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > extglob > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > nanomatch > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > nanomatch > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > extglob > expand-brackets > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > extglob > expand-brackets > snapdragon > debug:
+        patched: '2020-09-09T16:35:51.512Z'
+  'npm:hoek:20180212':
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > request > hawk > hoek:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > request > hawk > boom > hoek:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > request > hawk > sntp > hoek:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2020-09-09T16:35:51.512Z'
+  'npm:ms:20170412':
+    - react-scripts > react-dev-utils > detect-port-alt > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > react-error-overlay > react-dev-utils > detect-port-alt > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > react-error-overlay > react-dev-utils > sockjs-client > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > tar-pack > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > braces > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > braces > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > braces > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > extglob > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > extglob > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > nanomatch > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > nanomatch > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > anymatch > micromatch > extglob > expand-brackets > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
+    - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > readdirp > micromatch > extglob > expand-brackets > snapdragon > debug > ms:
+        patched: '2020-09-09T16:35:51.512Z'
