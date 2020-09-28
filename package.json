@@ -5,9 +5,9 @@
   "dependencies": {
     "axios": "^0.18.1",
     "d3-axis": "^1.0.12",
-    "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "snyk": "^1.392.1"
   },
   "devDependencies": {
