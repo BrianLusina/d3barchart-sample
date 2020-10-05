@@ -8,7 +8,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "snyk": "^1.392.1"
+    "snyk": "^1.406.0"
   },
   "devDependencies": {
     "d3": "^4.13.0",
