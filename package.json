@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "d3": "^4.13.0",
-    "enzyme": "^2.8.2",
+    "enzyme": "^3.11.0",
     "expect": "^1.20.2",
     "react-scripts": "3.4.3",
     "surge": "^0.21.4"
