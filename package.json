@@ -6,8 +6,8 @@
     "axios": "^0.20.0",
     "d3-axis": "^1.0.12",
     "prop-types": "^15.6.2",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "snyk": "^1.406.0"
   },
   "devDependencies": {
